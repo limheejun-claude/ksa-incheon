@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSA 인천지회 INSIGHT 세미나 3월 조찬회</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b35;
+    --deep-blue: #1a3260;
+    --gold: #c9963a;
+    --gold-light: #e8b96a;
+    --cream: #f8f4ed;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a5568;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(26,50,96,0.8) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,150,58,0.15) 0%, transparent 50%),
+      linear-gradient(160deg, #0d1b35 0%, #1a2f5a 50%, #0d1b35 100%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(201,150,58,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,150,58,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 760px;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    padding: 6px 20px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    animation: fadeDown 0.8s 0.15s ease both;
+  }
+
+  .hero-title .highlight {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 48px;
+    animation: fadeDown 0.8s 0.25s ease both;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 56px;
+    animation: fadeDown 0.8s 0.35s ease both;
+  }
+
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .meta-chip .icon {
+    font-size: 16px;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    animation: fadeDown 0.8s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201,150,58,0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 2px;
+    animation: fadeDown 1.2s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* Sections */
+  section {
+    padding: 80px 24px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+
+  /* Program */
+  .program-section {
+    background: var(--deep-blue);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 119px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(201,150,58,0.2);
+  }
+
+  .time-col {
+    padding: 24px 20px 24px 0;
+    text-align: right;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+    padding-top: 26px;
+  }
+
+  .content-col {
+    border-left: 1px solid rgba(201,150,58,0.3);
+    padding: 24px 0 24px 24px;
+    position: relative;
+  }
+
+  .content-col::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 28px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .timeline-main {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .timeline-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .featured-item .content-col {
+    background: rgba(201,150,58,0.08);
+    border-left-color: var(--gold);
+    padding: 24px 20px 24px 24px;
+    margin-left: 0;
+  }
+
+  .featured-item .timeline-main {
+    color: var(--gold-light);
+    font-size: 17px;
+  }
+
+  /* Speaker */
+  .speaker-section {
+    background: var(--navy);
+  }
+
+  .speaker-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px;
+    align-items: start;
+  }
+
+  .speaker-img-wrap {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+  }
+
+  .speaker-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--deep-blue), var(--navy));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .speaker-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .speaker-role {
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .speaker-affil {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .speaker-quote {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  /* Registration */
+  .reg-section {
+    background: var(--cream);
+    color: var(--text-dark);
+  }
+
+  .reg-section .section-title {
+    color: var(--text-dark);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group.full {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+
+  .form-group label span {
+    color: var(--gold);
+  }
+
+  .form-group input,
+  .form-group select {
+    border: 1.5px solid rgba(0,0,0,0.12);
+    background: white;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+  }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .btn-submit:hover {
+    background: var(--deep-blue);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* Participants */
+  .participants-section {
+    background: #0a1628;
+  }
+
+  .participant-count {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: 'Noto Serif KR', serif;
+    margin-bottom: 8px;
+  }
+
+  .participant-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .participants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .participant-chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .participant-person {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .participant-company {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* Footer */
+  footer {
+    background: #060e1c;
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    line-height: 2;
+    border-top: 1px solid rgba(201,150,58,0.15);
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* Success overlay */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .success-overlay.show { display: flex; }
+
+  .success-box {
+    background: var(--deep-blue);
+    border: 1px solid var(--gold);
+    padding: 48px;
+    text-align: center;
+    max-width: 400px;
+    margin: 24px;
+  }
+
+  .success-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .success-box h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .success-box p {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  /* Animations */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @media (max-width: 600px) {
+    .speaker-card {
+      grid-template-columns: 1fr;
+    }
+    .speaker-img-wrap {
+      width: 120px;
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .timeline-item {
+      grid-template-columns: 90px 1fr;
+    }
+    .time-col {
+      font-size: 11px;
+    }
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="badge">KSA 인천지회 · INSIGHT 리더스클럽</div>
+    <h1 class="hero-title">
+      3월 조찬 세미나
+      <span class="highlight">INSIGHT</span>
+    </h1>
+    <p class="hero-subtitle">한국표준협회 인천지회 회장단 CEO 및 임원을 위한<br>조찬 강연 & 네트워킹</p>
+
+    <div class="meta-row">
+      <div class="meta-chip">
+        <span class="icon">📅</span>
+        <span>2026년 3월 25일 (수)</span>
+      </div>
+      <div class="meta-chip">
+        <span class="icon">⏰</span>
+        <span>07:30 – 09:30</span>
+      </div>
+      <div class="meta-chip">
+        <span class="icon">📍</span>
+        <span>오크우드 프리미어 인천 37층</span>
+      </div>
+    </div>
+
+    <div class="cta-group">
+      <a href="#register" class="btn-primary">참가 신청하기</a>
+      <a href="#program" class="btn-secondary">프로그램 보기</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- Program -->
+<section class="program-section" id="program">
+  <div class="container">
+    <p class="section-label">Program</p>
+    <h2 class="section-title">행사 프로그램</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time-col">~ 07:30</div>
+        <div class="content-col">
+          <div class="timeline-main">입장 및 등록</div>
+          <div class="timeline-sub">네임택 수령 / 착석</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">07:30</div>
+        <div class="content-col">
+          <div class="timeline-main">참가자 소개</div>
+          <div class="timeline-sub">사회자 진행</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">07:35</div>
+        <div class="content-col">
+          <div class="timeline-main">환영사</div>
+          <div class="timeline-sub">한국표준협회 인천지회장</div>
+        </div>
+      </div>
+      <div class="timeline-item featured-item">
+        <div class="time-col">07:40</div>
+        <div class="content-col">
+          <div class="timeline-main">조찬 강연</div>
+          <div class="timeline-sub" style="color:rgba(255,255,255,0.7); margin-top:6px; font-size:14px; line-height:1.6;">
+            휴머노이드 로봇의 글로벌 개발 현황 및 산업화 전망<br>
+            <span style="color:var(--gold); font-size:13px;">한재권 교수 (한양대학교 로봇공학과)</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">08:40</div>
+        <div class="content-col">
+          <div class="timeline-main">단체 기념촬영</div>
+          <div class="timeline-sub">사회자 진행</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">08:50</div>
+        <div class="content-col">
+          <div class="timeline-main">조찬 및 인사교류</div>
+          <div class="timeline-sub">~09:30 자유 네트워킹</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Speaker -->
+<section class="speaker-section" id="speaker">
+  <div class="container">
+    <p class="section-label">Speaker</p>
+    <h2 class="section-title">연사 소개</h2>
+
+    <div class="speaker-card">
+      <div class="speaker-img-wrap">
+        <div class="speaker-img-placeholder">🤖</div>
+      </div>
+      <div>
+        <div class="speaker-name">한재권 교수</div>
+        <div class="speaker-role">한양대학교 로봇공학과 교수</div>
+        <div class="speaker-affil">(주)에이로봇 CTO</div>
+        <blockquote class="speaker-quote">
+          휴머노이드 기술은 이미 현실에 도달했고, 새로운 경제 지형을 만들고 있습니다. 이제 그 향방은 경영자의 선택에 달려 있습니다.
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Registration -->
+<section class="reg-section" id="register">
+  <div class="container">
+    <p class="section-label" style="color:var(--gold)">Registration</p>
+    <h2 class="section-title">참가 신청</h2>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>성함 <span>*</span></label>
+        <input type="text" id="name" placeholder="홍길동">
+      </div>
+      <div class="form-group">
+        <label>직책 <span>*</span></label>
+        <input type="text" id="title" placeholder="대표이사">
+      </div>
+      <div class="form-group full">
+        <label>회사명 <span>*</span></label>
+        <input type="text" id="company" placeholder="(주)한국표준">
+      </div>
+      <div class="form-group full">
+        <label>연락처 <span>*</span></label>
+        <input type="tel" id="phone" placeholder="010-0000-0000">
+      </div>
+      <div class="form-group full">
+        <label>특이사항</label>
+        <input type="text" id="note" placeholder="없으면 공란">
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitForm()">신청 완료하기 →</button>
+    <p class="form-note">행사 개최 전날 참석자 분들께 확인 문자를 발송해 드립니다 · 문의: 담당자 임희준 책임 (010-8866-7677, <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbbbaeaaa8aea7a2a68ba0b8aae5a4b9e5a0b9">[email&#160;protected]</a>)</p>
+  </div>
+</section>
+
+<!-- Participants -->
+<section class="participants-section" id="participants">
+  <div class="container">
+    <p class="section-label">Attendees</p>
+    <h2 class="section-title">참가 신청 현황</h2>
+
+    <div class="participant-count" id="countDisplay">0</div>
+    <div class="participant-label">명 신청 완료</div>
+
+    <div class="participants-grid" id="participantsGrid">
+      <div style="color:rgba(255,255,255,0.3); font-size:14px;">아직 신청자가 없습니다.<br>첫 번째로 신청해 주세요!</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <strong>KSA 인천지회 INSIGHT 리더스클럽</strong><br>
+  한국표준협회 인천지회 사무국<br>
+  2026년 3월 25일 (수) · 오크우드 프리미어 인천 37층 아스테리아룸
+</footer>
+
+<!-- Success Overlay -->
+<div class="success-overlay" id="successOverlay" onclick="closeOverlay()">
+  <div class="success-box" onclick="event.stopPropagation()">
+    <div class="success-icon">✅</div>
+    <h3>신청이 완료되었습니다!</h3>
+    <p id="successMsg">확인 문자를 발송해 드립니다.<br>3월 25일 (수) 07:30까지<br>오크우드 프리미어 인천 37층으로 오세요.</p>
+    <button class="btn-submit" onclick="closeOverlay()">확인</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // In-memory participant storage (session only)
+  let participants = [];
+
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const title = document.getElementById('title').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !title || !company || !phone) {
+      alert('필수 항목을 모두 입력해 주세요.');
+      return;
+    }
+
+    // Check duplicate
+    const isDup = participants.some(p => p.phone === phone);
+    if (isDup) {
+      alert('이미 신청하신 연락처입니다.');
+      return;
+    }
+
+    participants.push({ name, title, company, phone });
+    updateParticipants();
+
+    // Clear form
+    ['name','title','company','phone','note'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+
+    document.getElementById('successMsg').innerHTML =
+      `<strong>${name}</strong> (${company}) 신청이 완료되었습니다.<br>확인 문자를 발송해 드립니다.<br><br>3월 25일 (수) 07:30까지<br>오크우드 프리미어 인천 37층으로 오세요.`;
+    document.getElementById('successOverlay').classList.add('show');
+  }
+
+  function updateParticipants() {
+    const grid = document.getElementById('participantsGrid');
+    const count = document.getElementById('countDisplay');
+    count.textContent = participants.length;
+
+    if (participants.length === 0) {
+      grid.innerHTML = '<div style="color:rgba(255,255,255,0.3); font-size:14px;">아직 신청자가 없습니다.<br>첫 번째로 신청해 주세요!</div>';
+      return;
+    }
+
+    grid.innerHTML = participants.map(p => `
+      <div class="participant-chip">
+        <div class="participant-person">${p.name} ${p.title}</div>
+        <div class="participant-company">${p.company}</div>
+      </div>
+    `).join('');
+  }
+
+  function closeOverlay() {
+    document.getElementById('successOverlay').classList.remove('show');
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEv
