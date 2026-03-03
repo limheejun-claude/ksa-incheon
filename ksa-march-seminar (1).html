@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSA 인천지회 INSIGHT 세미나 3월 조찬회</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b35; --deep-blue: #1a3260; --gold: #c9963a; --gold-light: #e8b96a;
+    --cream: #f8f4ed; --white: #ffffff; --text-dark: #1a1a2e; --text-mid: #4a5568;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--navy); font-family:'Noto Sans KR',sans-serif; color:var(--white); overflow-x:hidden; }
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:60px 24px; }
+  .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 20% 50%, rgba(26,50,96,0.8) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(201,150,58,0.15) 0%, transparent 50%), linear-gradient(160deg, #0d1b35 0%, #1a2f5a 50%, #0d1b35 100%); }
+  .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,150,58,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,150,58,0.06) 1px, transparent 1px); background-size:60px 60px; }
+  .hero-content { position:relative; z-index:2; text-align:center; max-width:760px; }
+  .badge { display:inline-block; border:1px solid var(--gold); color:var(--gold); font-size:11px; font-weight:500; letter-spacing:3px; padding:6px 20px; margin-bottom:32px; animation:fadeDown 0.8s ease both; }
+  .hero-title { font-family:'Noto Serif KR',serif; font-size:clamp(32px,6vw,56px); font-weight:900; line-height:1.2; margin-bottom:16px; animation:fadeDown 0.8s 0.15s ease both; }
+  .hero-title .highlight { color:var(--gold); display:block; }
+  .hero-subtitle { font-size:clamp(14px,2.5vw,18px); color:rgba(255,255,255,0.65); font-weight:300; margin-bottom:48px; animation:fadeDown 0.8s 0.25s ease both; }
+  .meta-row { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-bottom:56px; animation:fadeDown 0.8s 0.35s ease both; }
+  .meta-chip { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(8px); padding:10px 20px; border-radius:40px; font-size:14px; }
+  .cta-group { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; animation:fadeDown 0.8s 0.45s ease both; }
+  .btn-primary { background:var(--gold); color:var(--navy); border:none; padding:16px 40px; font-size:16px; font-weight:700; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all 0.2s; text-decoration:none; display:inline-block; }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 32px rgba(201,150,58,0.4); }
+  .btn-secondary { background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.3); padding:16px 40px; font-size:16px; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all 0.2s; text-decoration:none; display:inline-block; }
+  .btn-secondary:hover { border-color:var(--white); background:rgba(255,255,255,0.05); }
+  .scroll-hint { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:rgba(255,255,255,0.3); font-size:11px; letter-spacing:2px; animation:fadeDown 1.2s 0.8s ease both; }
+  .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation:scrollPulse 2s infinite; }
+  section { padding:80px 24px; }
+  .container { max-width:800px; margin:0 auto; }
+  .section-label { color:var(--gold); font-size:11px; letter-spacing:3px; font-weight:500; margin-bottom:12px; text-transform:uppercase; }
+  .section-title { font-family:'Noto Serif KR',serif; font-size:clamp(24px,4vw,36px); font-weight:700; margin-bottom:40px; line-height:1.3; }
+  .program-section { background:var(--deep-blue); }
+  .timeline { display:flex; flex-direction:column; }
+  .timeline-item { display:grid; grid-template-columns:120px 1fr; position:relative; }
+  .timeline-item:not(:last-child)::after { content:''; position:absolute; left:119px; top:40px; bottom:0; width:1px; background:rgba(201,150,58,0.2); }
+  .time-col { padding:24px 20px 24px 0; text-align:right; font-size:13px; color:var(--gold); font-weight:500; padding-top:26px; }
+  .content-col { border-left:1px solid rgba(201,150,58,0.3); padding:24px 0 24px 24px; position:relative; }
+  .content-col::before { content:''; position:absolute; left:-5px; top:28px; width:9px; height:9px; border-radius:50%; background:var(--gold); }
+  .timeline-main { font-size:16px; font-weight:600; margin-bottom:4px; line-height:1.4; }
+  .timeline-sub { font-size:13px; color:rgba(255,255,255,0.5); }
+  .featured-item .content-col { background:rgba(201,150,58,0.08); border-left-color:var(--gold); padding:24px 20px 24px 24px; }
+  .featured-item .timeline-main { color:var(--gold-light); font-size:17px; }
+  .speaker-section { background:var(--navy); }
+  .speaker-card { display:grid; grid-template-columns:160px 1fr; gap:40px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:40px; align-items:start; }
+  .speaker-img-wrap { aspect-ratio:1; overflow:hidden; border:2px solid var(--gold); }
+  .speaker-name { font-family:'Noto Serif KR',serif; font-size:26px; font-weight:700; margin-bottom:8px; }
+  .speaker-role { color:var(--gold); font-size:13px; margin-bottom:4px; }
+  .speaker-affil { color:rgba(255,255,255,0.5); font-size:13px; margin-bottom:24px; }
+  .speaker-quote { font-size:15px; line-height:1.8; color:rgba(255,255,255,0.75); font-style:italic; border-left:3px solid var(--gold); padding-left:16px; }
+  .reg-section { background:var(--cream); color:var(--text-dark); }
+  .reg-section .section-title { color:var(--text-dark); }
+  .form-note { font-size:12px; color:var(--text-mid); margin-top:24px; text-align:center; line-height:2; }
+  .participants-section { background:#0a1628; }
+  .participant-count { font-size:48px; font-weight:700; color:var(--gold); font-family:'Noto Serif KR',serif; margin-bottom:8px; }
+  .participant-label { color:rgba(255,255,255,0.5); font-size:14px; margin-bottom:32px; }
+  .participants-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:12px; }
+  .participant-chip { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); padding:12px 16px; display:flex; flex-direction:column; gap:2px; }
+  .participant-person { font-size:14px; font-weight:600; }
+  .participant-company { font-size:12px; color:rgba(255,255,255,0.45); }
+  footer { background:#060e1c; padding:40px 24px; text-align:center; color:rgba(255,255,255,0.3); font-size:13px; line-height:2; border-top:1px solid rgba(201,150,58,0.15); }
+  footer strong { color:rgba(255,255,255,0.6); }
+
+  .popup-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center; padding:20px; }
+  .popup-overlay.show { display:flex; }
+  .popup-box { background:#fff; color:var(--text-dark); max-width:480px; width:100%; padding:40px 36px; position:relative; animation:fadeDown 0.3s ease; }
+  .popup-close { position:absolute; top:16px; right:20px; font-size:22px; cursor:pointer; color:#999; background:none; border:none; line-height:1; }
+  .popup-close:hover { color:#333; }
+  .popup-icon { font-size:40px; margin-bottom:16px; }
+  .popup-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+  .popup-body { font-size:14px; line-height:1.9; color:var(--text-mid); margin-bottom:28px; }
+  .popup-body strong { color:var(--navy); }
+  .popup-note { background:#f8f4ed; border-left:3px solid var(--gold); padding:12px 16px; font-size:13px; color:var(--text-mid); line-height:1.7; margin-bottom:28px; }
+  .popup-btn { display:block; width:100%; background:var(--gold); color:var(--navy); border:none; padding:16px; font-size:16px; font-weight:700; font-family:'Noto Sans KR',sans-serif; cursor:pointer; text-align:center; text-decoration:none; transition:background 0.2s; }
+  .popup-btn:hover { background:var(--gold-light); }
+
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes scrollPulse { 0%,100% { opacity:0.3; } 50% { opacity:0.8; } }
+  @media (max-width:600px) {
+    .speaker-card { grid-template-columns:1fr; }
+    .speaker-img-wrap { width:120px; }
+    .timeline-item { grid-template-columns:90px 1fr; }
+    .time-col { font-size:11px; }
+    section { padding:60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="badge">KSA 인천지회 · INSIGHT 리더스클럽</div>
+    <h1 class="hero-title">3월 조찬 세미나<span class="highlight">INSIGHT</span></h1>
+    <p class="hero-subtitle">한국표준협회 인천지회 회장단 CEO 및 임원을 위한<br>조찬 강연 &amp; 네트워킹</p>
+    <div class="meta-row">
+      <div class="meta-chip"><span>📅</span><span>2026년 3월 25일 (수)</span></div>
+      <div class="meta-chip"><span>⏰</span><span>07:30 – 09:30</span></div>
+      <div class="meta-chip"><span>📍</span><span>오크우드 프리미어 인천 37층</span></div>
+    </div>
+    <div class="cta-group">
+      <a href="#" onclick="openPopup();return false;" class="btn-primary">참가 신청하기</a>
+      <a href="#program" class="btn-secondary">프로그램 보기</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
+</section>
+
+<!-- Program -->
+<section class="program-section" id="program">
+  <div class="container">
+    <p class="section-label">Program</p>
+    <h2 class="section-title">행사 프로그램</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time-col">~ 07:30</div>
+        <div class="content-col"><div class="timeline-main">입장 및 등록</div><div class="timeline-sub">네임택 수령 / 착석</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">07:30</div>
+        <div class="content-col"><div class="timeline-main">참가자 소개</div><div class="timeline-sub">사회자 진행</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">07:35</div>
+        <div class="content-col"><div class="timeline-main">환영사</div><div class="timeline-sub">한국표준협회 인천지회장</div></div>
+      </div>
+      <div class="timeline-item featured-item">
+        <div class="time-col">07:40</div>
+        <div class="content-col">
+          <div class="timeline-main">조찬 강연</div>
+          <div class="timeline-sub" style="color:rgba(255,255,255,0.7);margin-top:6px;font-size:14px;line-height:1.6;">
+            휴머노이드 로봇의 글로벌 개발 현황 및 산업화 전망<br>
+            <span style="color:var(--gold);font-size:13px;">한재권 교수 (한양대학교 로봇공학과)</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">08:40</div>
+        <div class="content-col"><div class="timeline-main">단체 기념촬영</div><div class="timeline-sub">사회자 진행</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-col">08:50</div>
+        <div class="content-col"><div class="timeline-main">조찬 및 인사교류</div><div class="timeline-sub">~09:30 자유 네트워킹</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Speaker -->
+<section class="speaker-section" id="speaker">
+  <div class="container">
+    <p class="section-label">Speaker</p>
+    <h2 class="section-title">연사 소개</h2>
+    <div class="speaker-card">
+      <div class="speaker-img-wrap">
+        <img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;" alt="한재권 교수">
+      </div>
+      <div>
+        <div class="speaker-name">한재권 교수</div>
+        <div class="speaker-role">한양대학교 로봇공학과 교수</div>
+        <div class="speaker-affil">(주)에이로봇 CTO</div>
+        <blockquote class="speaker-quote">휴머노이드 기술은 이미 현실에 도달했고, 새로운 경제 지형을 만들고 있습니다. 이제 그 향방은 경영자의 선택에 달려 있습니다.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Registration -->
+<section class="reg-section" id="register">
+  <div class="container">
+    <p class="section-label" style="color:var(--gold)">Registration</p>
+    <h2 class="section-title">참가 신청</h2>
+    <div style="text-align:center;padding:20px 0 32px;">
+      <p style="color:var(--text-mid);font-size:15px;margin-bottom:32px;line-height:1.8;">
+        아래 버튼을 클릭하시면 참가신청 페이지로 이동합니다.<br>
+        성함, 직책, 회사명, 연락처를 입력 후 제출해 주세요.
+      </p>
+      <a href="#" onclick="openPopup();return false;" class="btn-primary" style="font-size:18px;padding:20px 56px;">
+        참가 신청하기 →
+      </a>
+    </div>
+    <p class="form-note">
+      행사 개최 전날 참석자 분들께 확인 문자를 발송해 드립니다<br>
+      문의: 담당자 임희준 책임 (010-8866-7677, <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3040555153555c595d705b43511e5f421e5b42">[email&#160;protected]</a>)
+    </p>
+  </div>
+</section>
+
+<!-- Participants -->
+<section class="participants-section" id="participants">
+  <div class="container">
+    <p class="section-label">Attendees</p>
+    <h2 class="section-title">참가 신청 현황</h2>
+    <div class="participant-count" id="countDisplay">-</div>
+    <div class="participant-label">명 신청 완료</div>
+    <div class="participants-grid" id="participantsGrid">
+      <div style="color:rgba(255,255,255,0.3);font-size:14px;">명단을 불러오는 중...</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>KSA 인천지회 INSIGHT 리더스클럽</strong><br>
+  한국표준협회 인천지회 사무국<br>
+  2026년 3월 25일 (수) · 오크우드 프리미어 인천 37층 아스테리아룸
+</footer>
+
+<!-- 참가신청 팝업 -->
+<div class="popup-overlay" id="registerPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div class="popup-icon">📋</div>
+    <div class="popup-title">참가신청 안내</div>
+    <div class="popup-body">
+      확인 버튼을 누르시면 <strong>구글폼 참가신청 페이지</strong>로 이동합니다.<br>
+      성함, 직책, 회사명, 연락처를 입력하신 후 제출해 주세요.
+    </div>
+    <div class="popup-note">
+      ⏱ 신청 완료 후 이 페이지의 <strong>참가 신청 현황</strong>에 반영되기까지<br>
+      <strong>최대 30초 ~ 1분</strong> 소요될 수 있습니다.<br>
+      페이지를 새로고침하시면 더 빠르게 확인하실 수 있습니다.
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSflI_imcyLyYQefqV7snIHsGvSgVKrGlPcW1Wmi1gMyeD1A5Q/viewform" target="_blank" class="popup-btn" onclick="closePopup()">
+      구글폼으로 참가신청하기 →
+    </a>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function openPopup() { document.getElementById('registerPopup').classList.add('show'); }
+  function closePopup() { document.getElementById('registerPopup').classList.remove('show'); }
+  document.getElementById('registerPopup').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+  });
+
+  var SHEET_ID = '1EnW0qlQiTZ7FT9gJLsrWqKxLW6q6UrGBCMctQ_VPMd4';
+  var SHEET_NAME = '설문지 응답 시트1';
+  var SHEET_API = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+
+  async function loadParticipants() {
+    var grid = document.getElementById('participantsGrid');
+    var count = document.getElementById('countDisplay');
+    try {
+      var res = await fetch(SHEET_API);
+      var text = await res.text();
+      var jsonStr = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*?)\);/)[1];
+      var json = JSON.parse(jsonStr);
+      var rows = (json.table && json.table.rows) ? json.table.rows : [];
+      var list = rows.map(function(r) {
+        return { name: r.c[1] ? r.c[1].v : '', title: r.c[2] ? r.c[2].v : '', company: r.c[3] ? r.c[3].v : '' };
+      }).filter(function(p) { return p.name; });
+      count.textContent = list.length;
+      if (list.length === 0) {
+        grid.innerHTML = '<div style="color:rgba(255,255,255,0.3);font-size:14px;">아직 신청자가 없습니다.<br>첫 번째로 신청해 주세요!</div>';
+        return;
+      }
+      grid.innerHTML = list.map(function(p) {
+        return '<div class="participant-chip"><div class="participant-person">' + p.name + ' ' + p.title + '</div><div class="participant-company">' + p.company + '</div></div>';
+      }).join('');
+    } catch(e) {
+      console.error('시트 로드 오류:', e);
+      count.textContent = '-';
+    }
+  }
+
+  loadParticipants();
+  setInterval(loadParticipants, 30000);
+
+  document.querySelectorAll('a[href^="#program"]').forEach(function(a) {
+ 
