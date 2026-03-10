@@ -184,22 +184,10 @@
   </div>
 </section>
 
-<section class="participants-section" id="participants">
-  <div class="container">
-    <p class="section-label">Attendees</p>
-    <h2 class="section-title">참가 신청 현황</h2>
-    <div class="participant-count" id="countDisplay">-</div>
-    <div class="participant-label">명 신청 완료</div>
-    <div class="participants-grid" id="participantsGrid">
-      <div style="color:rgba(255,255,255,0.3);font-size:14px;">명단을 불러오는 중...</div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <strong>KSA 인천지회 INSIGHT 리더스클럽</strong><br>
   한국표준협회 인천지회 사무국<br>
-  2026년 3월 25일 (수) · 오크우드 프리미어 인천 37층 아스테리아룸
+  인천 남동구 남동대로 215번길 30, 인천종합비즈니스센터 6층 한국표준협회 (Tel. 032-260-0260)
 </footer>
 
 <div class="popup-overlay" id="registerPopup">
@@ -233,6 +221,45 @@
     if (e.target === this) closePopup();
   });
 
+  // 회원사 공식 명단
+  var MEMBER_COMPANIES = [
+    '㈜한영넉스','㈜대금지오웰','동아베스텍㈜','린나이코리아㈜','㈜코릴','태주공업㈜',
+    '경인레미콘사업협동조합','㈜대한솔루션','㈜삼양사 인천공장','지에스칼텍스㈜ 인천윤활유공장',
+    '풍산특수금속','씨트론㈜','㈜파버나인','신우시스템㈜','㈜SIMPAC','㈜에몬스가구',
+    '한국남동발전㈜ 영흥발전본부','케이지스틸㈜ 인천공장','㈜동보','두원소방㈜',
+    '㈜삼원하이텍','신풍금속㈜','㈜에스이앤컴퍼니','동화기업','기산수기',
+    '㈜국제산전','진용정공㈜','㈜하나금속','한국서부발전㈜ 서인천발전본부',
+    '㈜엔에스브이','영림목재㈜','㈜판촉사랑','㈜어드밴스메탈'
+  ];
+
+  // 회사명 핵심 키워드 추출 (특수문자·공백·법인형태 제거)
+  function normalizeCompany(name) {
+    return (name || '')
+      .replace(/㈜|㈜\s*|\(주\)|\(株\)|주식회사|유한회사|\(유\)/gi, '')
+      .replace(/\s+/g, '')
+      .toLowerCase();
+  }
+
+  // 핵심 키워드로 미리 인덱싱
+  var MEMBER_INDEX = MEMBER_COMPANIES.map(function(official) {
+    return { official: official, key: normalizeCompany(official) };
+  });
+
+  function matchCompany(input) {
+    var inputKey = normalizeCompany(input);
+    if (!inputKey) return input;
+    // 완전 일치 우선
+    for (var i = 0; i < MEMBER_INDEX.length; i++) {
+      if (MEMBER_INDEX[i].key === inputKey) return MEMBER_INDEX[i].official;
+    }
+    // 포함 관계 (입력값이 공식명 안에 있거나, 공식명이 입력값 안에 있는 경우)
+    for (var j = 0; j < MEMBER_INDEX.length; j++) {
+      var k = MEMBER_INDEX[j].key;
+      if (k.includes(inputKey) || inputKey.includes(k)) return MEMBER_INDEX[j].official;
+    }
+    return input; // 매칭 실패 시 원본 반환
+  }
+
   var SHEET_ID = '1EnW0qlQiTZ7FT9gJLsrWqKxLW6q6UrGBCMctQ_VPMd4';
   var SHEET_NAME = '설문지 응답 시트1';
   var SHEET_API = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
@@ -247,8 +274,12 @@
       var json = JSON.parse(jsonStr);
       var rows = (json.table && json.table.rows) ? json.table.rows : [];
       var list = rows.map(function(r) {
-        return { name: r.c[1] ? r.c[1].v : '', title: r.c[2] ? r.c[2].v : '', company: r.c[3] ? r.c[3].v : '' };
+        return { name: r.c[1] ? r.c[1].v : '', title: r.c[2] ? r.c[2].v : '', company: matchCompany(r.c[3] ? r.c[3].v : '') };
       }).filter(function(p) { return p.name; });
+      list.sort(function(a, b) {
+        var cmp = a.company.localeCompare(b.company, 'ko');
+        return cmp !== 0 ? cmp : a.name.localeCompare(b.name, 'ko');
+      });
       count.textContent = list.length;
       if (list.length === 0) {
         grid.innerHTML = '<div style="color:rgba(255,255,255,0.3);font-size:14px;">아직 신청자가 없습니다.<br>첫 번째로 신청해 주세요!</div>';
